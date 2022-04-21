@@ -31,6 +31,11 @@ app.get('/:word/echo',(req,res) => {
     res.json(data);
 })
 
+app.route('/name').get((req,res) => {
+    var data = {name: req.query.first + ' ' + req.query.last};
+    res.json(data);
+})
+
 app.use('/public',express.static('public'))
 express.static(path.join(__dirname + '/public'));
 
