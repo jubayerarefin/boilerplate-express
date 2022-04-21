@@ -19,6 +19,13 @@ app.get('/json',(req,res) => {
     res.json(data);
 })
 
+app.get('/now', function(req, res, next) {
+  req.time = new Date().toString();
+  next();
+}, function(req, res) {
+  res.json({time: req.time});
+});
+
 app.use('/public',express.static('public'))
 express.static(path.join(__dirname + '/public'));
 
