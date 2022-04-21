@@ -37,6 +37,9 @@ app.get('/:word/echo',(req,res) => {
 app.route('/name').get((req,res) => {
     var data = {name: req.query.first + ' ' + req.query.last};
     res.json(data);
+}).post((req,res) => {
+    var data = {name: req.body.first + ' ' + req.body.last};
+    res.json(data);
 })
 
 app.use('/public',express.static('public'))
