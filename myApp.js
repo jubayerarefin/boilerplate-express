@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var bodyParser = require('body-parser');
 var app = express();
 require('dotenv').config()
 const MESSAGE_STYLE = process.env['MESSAGE_STYLE'];
@@ -8,6 +9,8 @@ app.use(function(req, res, next) {
   console.log(req.method,req.path,'-',req.ip);
   next();
 })
+
+app.use(bodyParser.urlencoded({extended: false}))
 
 app.get('/',(req,res) => {
     // console.log('Dir Name: ', path.join(__dirname + '/public'));
